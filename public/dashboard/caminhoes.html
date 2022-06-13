@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <link rel="shortcut icon" href="../assets/icon/favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Icelog | Tempo Real</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/body.css">
+    <link rel="stylesheet" href="../css/root.css">
+    <link rel="stylesheet" href="../css/cabecalho__Dash.css">
+    <link rel="stylesheet" href="../css/corpo__dashboard.css">
+    <link rel="stylesheet" href="../css/rodape.css">
+    <link rel="icon" href="../img/iceLogRedondo.png">
+    <!-- <script type="text/javascript" src="https://www.chartjs.org/dist/2.8.0/Chart.min.js"></script>
+    <script src="../js/funcoes.js"></script> -->
+</head>
+</head>
+<!-- <body> -->
+<!-- <body onload="exibirMuitos(), validarSessao(), atualizacaoPeriodica()"> -->
+    <header class="cabecalho">
+        <section class="container__cabecalho">
+            <a href="../index.html"><img src="../img/logo4.png" alt="" class="cabecalho__img"></a>
+            <ul class="cabecalho__menu">
+                <button class="cabecalho__menu--cadastro"><i>Menu</i></button>
+                <span class="cabecalho__texto--bemVindo">Seja bem vindo <b id="b_usuario"></b>!</span>
+                <li>|</li>
+                <li class="cabecalho__sair" onclick="limparSessao()">Sair</li>
+            </ul>
+        </section>
+    </header>
+    <main>
+        <section class="menu__lateral">
+            <h2 class="titulo_menu__cadastro--func">Menu</h2>  
+            <section id="botoes__menu" class="menu__inicial">
+                <button class="botao_menu__cadastro--func" onclick="botao__cadastro()">Cadastro</button>
+                <!-- <img src="../img/iceLogRedondo.png" alt="" class="img_menu"> -->
+                <!-- <button class="botao_menu__cadastro--func" onclick="botao__login()">Login</button> -->
+                <button class="voltar__menu--func" onclick="botao__voltar()" id="botao__voltar__menu">Voltar</button>
+                <button class="botao_menu__cadastro--func--Help"><a href="https://stonly.com/guide/en/icelog-wPYiDKEWwR/Steps/1454948,1454951">Manual de instalação</a></button>
+                <button class="botao_menu__cadastro--func--Help"><a href="https://icelog.freshdesk.com/">Help Desk</a></button>
+            </section>
+            <section style="display: none;" id="cadastro__menu" class="menu__cadastro__inputs">
+                <p class="subTitulo_menu__cadastro--func">Nome usuario:</p>
+                <input id="ipt_cadastroNome" placeholder="" class="ipt_cadastro--func">
+
+                <p class="subTitulo_menu__cadastro--func">Email:</p>
+                <input type="email" id="ipt_cadastroEmail" placeholder="" class="ipt_cadastro--func">
+
+                <p class="subTitulo_menu__cadastro--func">Senha:</p>
+                <input type="password" id="ipt_cadastroSenha" placeholder="" class="ipt_cadastro--func">
+
+                <button class="botao_menu__cadastro--cadast" onclick="cadastrarUsuario()">Cadastrar</button>
+
+                <div id="div_validar" class="validacao"></div>
+
+                <button class="voltar__menu--cadast" onclick="botao__voltar()">Voltar</button>
+            </section>
+            <section style="display: none;" id="login__menu" class="menu__login__inputs">
+                <p class="subTitulo_menu__cadastro--func">Email:</p>
+                <input type="text" id="" placeholder="" class="ipt_cadastro--func">
+                <p class="subTitulo_menu__cadastro--func">Senha:</p>
+                <input type="text" id="" placeholder="" class="ipt_cadastro--func">
+                <button class="botao_menu__cadastro--login">Logar</button>
+                <button class="voltar__menu--login" onclick="botao__voltar()">Voltar</button>
+            </section>
+    </section>
+    <div class="pairegua">
+        <div class="regua">
+            <div class="item-regua perigo-frio">
+                <h4>Crítico</h4>
+                <h2>Abaixo de -6,59°C</h2>
+            </div>
+            <div class="item-regua alerta-frio">
+                <h4>Alerta</h4>
+                <h2>-6,58ºC até -3,85ºC</h2>
+            </div>
+            <div class="item-regua ideal">
+                <h4>Linear</h4>
+                <h2>-3,84ºC até 0,07ºC </h2>
+            </div>
+            <div class="item-regua alerta-quente">
+                <h4>Alerta</h4>
+                <h2>0,08ºC até 1,74ºC</h2>
+            </div>
+            <div class="item-regua perigo-quente">
+                <h4>Crítico</h4>
+                <h2>Acima de 1,75ºC</h2>
+            </div>
+    </div>
+    <div id="estrutura">
+        <section class="Dash__pai">
+             <div class="painel__Dash" id="div_muitos_botoes" >
+            </div>
+            <section class="painel__KPI">
+                <div class="KPI1">Caminhões em estado crítico:
+                    <p class="KPI1__numero" id="mostrarKPI1">0</p>
+                </div>
+                <div class="KPI2">Caminhões em estado alerta:
+                    <p class="KPI2__numero" id="mostrarKPI2">0</p>  
+                </div>
+                <div class="KPI3">Caminhões em estado linear:
+                    <p class="KPI3__numero" id="mostrarKPI3">0</p>
+                </div>
+            </section>
+        </section>
+    </div>
+    </main>
+    <footer class="rodape">
+        <img class="logo__rodape" src="../img/logo4.png" alt="">
+        <img class="copy" src="../img/copy.png" alt="">
+        <p>copy</p>
+        <img class="logo_face" src="../img/logo face.png" alt="">
+        <img class="logo_insta" src="../img/logo inst.png" alt="">
+        <img class="logo_tt" src="../img/logo tt.png" alt="">
+    </footer>
+    <script src="../js/cadastroFuncionario.js"></script>
+</body>
+</html>
+<script>
+    exibirMuitos();
+    atualizacaoPeriodica();
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    var lista = []
+    var ultimaTemp =[];
+
+        // cadastrar usuario 
+        function cadastrarUsuario() {
+        var nomeVar = ipt_cadastroNome.value;
+        var emailVar = ipt_cadastroEmail.value;
+        var senhaVar = ipt_cadastroSenha.value;
+        var tpUsuarioVar = 3;
+        var fkEmpresaVar = sessionStorage.FK_EMPRESA;
+
+        if (nomeVar == "" || emailVar == "" || senhaVar == "") {
+            cardErro.style.display = "block"
+            div_validar.innerHTML = "Preencha todos os campos para prosseguir!";
+
+            return false;
+        }
+        
+
+        
+      if (senhaVar.length < 8 || senhaVar.length > 15) {
+        div_validar.innerHTML = `Insira uma senha com mínimo de 8 e máximo de 15`
+    } 
+
+        if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1) {
+            cardErro.style.display = "block"
+            div_validar.innerHTML = "Ops, e-mail inválido! Verifique e tente novamente.";
+            return false;
+        }
+        
+
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                nomeServer: nomeVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar,
+                tpUsuarioServer: tpUsuarioVar,
+                fkEmpresaServer: fkEmpresaVar
+            })
+        }).then(function (resposta) {
+
+            if (resposta.ok) {
+                cardErro.style.display = "block"
+                mensagem_erro.innerHTML = "Cadastro realizado com sucesso!";
+                limparFormulario();
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            limparFormulario();
+        });
+
+        return false;
+    }
+
+    function limparFormulario(){
+        ipt_cadastroNome.value = "";
+        ipt_cadastroEmail.value = "";
+        ipt_cadastroSenha.value = "";
+    }
+
+
+    // mostrar e plotar caminhoes
+    function exibirMuitos() {
+        fetch("/dash/listarCaminhao", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO listar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+                resposta.json().then(json => {
+                    console.log(json);
+                    // console.log(json.length)
+                    // console.log(JSON.stringify(json));
+                    lista = [];
+                    
+                    for(let i = 0; i < json.length; i ++ ){
+                        lista.push(json[i]);
+                        console.log(`cadastro ${i}`)
+                        // o nome de cada botao retorna assim
+                        console.log(lista[i])
+                    }
+                    mostrarCaminhao();
+                });
+            } else {
+                console.log("Houve um erro ao tentar realizar o listar!");
+                resposta.text().then(texto => {
+                    console.error(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+    function mostrarCaminhao(){
+        if (lista.length != -1) {
+            div_muitos_botoes.innerHTML = ``
+
+            for (let i = 0; i < lista.length; i++) {
+                div_muitos_botoes.innerHTML += `
+                <button class="caminhao__botao" onclick="mostrar_dash(${lista[i].idCaminhao})"><img id="caminhao${lista[i].idCaminhao}" class="caminhão__painel" src="../img/Ícone do caminhão.png"></button>
+                `
+            }
+        }
+    }
+
+    function mostrar_dash(idCaminhao){
+        window.open("http://localhost:3333/dashboard/cards.html");
+        localStorage.idCaminhao = idCaminhao;
+    }
+
+    // buscar dados e alterar kpis
+    function atualizacaoPeriodica() {
+        var idEmpresa = sessionStorage.FK_EMPRESA;
+        obterdados(idEmpresa);
+        function sendData() {
+			var http = new XMLHttpRequest();
+			http.open('POST', 'http://localhost:3000/api/sendData', false);
+			http.send(null);
+            KPI();
+		}
+        setInterval(() => {
+			sendData();
+            KPI();
+		}, 100000);
+        setTimeout(atualizacaoPeriodica, 100000);
+    }
+    function obterdados(idEmpresa) {
+        console.log(idEmpresa)
+        fetch(`/medidas/em-tempo-real/${idEmpresa}`)
+            .then(resposta => {
+                if (resposta.ok) {
+                    // zerando a list
+                    ultimaTemp = [];
+                    resposta.json().then(resposta => {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                        var dados = {
+                            temperatura: resposta[0].temperatura,
+                        }
+
+                        for(let i = 0; i < resposta.length; i ++ ){
+                            ultimaTemp.push(resposta[i]);
+                        console.log(`cadastro temp ${i}`)
+                        // o nome de cada botao retorna assim
+                        console.log(ultimaTemp[i])
+                    }
+                    KPI();
+
+                        // alertar(resposta[0].temperatura, idCaminhao);
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados do aquario p/ gráfico: ${error.message}`);
+                KPI();
+            });
+    }
+
+    function alertar(temperatura, idCaminhao) {
+        var limites = {
+            muito_quente: 23,
+            quente: 22,
+            ideal: 20,
+            frio: 10,
+            muito_frio: 5
+        };
+        var classe_temperatura = 'cor-alerta';
+        if (temperatura >= limites.muito_quente) {
+            classe_temperatura = 'cor-alerta perigo-quente';
+            console.log("caiu no 1")
+        }
+        else if (temperatura < limites.muito_quente && temperatura >= limites.quente) {
+            classe_temperatura = 'cor-alerta alerta-quente';
+            console.log("caiu no 2")
+        }
+        else if (temperatura < limites.quente && temperatura > limites.frio) {
+            classe_temperatura = 'cor-alerta ideal';
+            console.log("caiu no 3")
+        }
+        else if (temperatura <= limites.frio && temperatura > limites.muito_frio) {
+            classe_temperatura = 'cor-alerta alerta-frio';
+            console.log("caiu no 4")
+        }
+        else if (temperatura < limites.min_temperatura) {
+            classe_temperatura = 'cor-alerta perigo-frio';
+            console.log("caiu no 5")
+        }
+        var card;
+        if (idCaminhao == 1) {
+            temp_aquario_1.innerHTML = temperatura + "°C";
+            card = card_1
+        } else if (idCaminhao == 2) {
+            temp_aquario_2.innerHTML = temperatura + "°C";
+            card = card_2
+        } else if (idCaminhao == 3) {
+            temp_aquario_3.innerHTML = temperatura + "°C";
+            card = card_3
+        } else if (idCaminhao == 4) {
+            temp_aquario_4.innerHTML = temperatura + "°C";
+            card = card_4
+        }
+        // alterando
+        card.className = classe_temperatura;
+
+    }
+
+    var KPI1 = 0
+    var KPI2 = 0
+    var KPI3 = 0
+
+    function KPI() {
+        
+        KPI1 = 0
+        KPI2 = 0
+        KPI3 = 0
+
+       for(var i = 0; i <= ultimaTemp.length -1; i++){
+        var idCaminhao = ultimaTemp[i].idSensor;
+        // console.log(idCaminhao)
+        var caminhaoPrimeiro = "caminhao"+idCaminhao;
+        // console.log(caminhao)
+
+            if (ultimaTemp[i].temperatura <= -6.59) {
+                KPI1++
+                caminhao3.src = "../img/caminhao_critico.png";
+                
+            }
+            if (ultimaTemp[i].temperatura >= 1.75) {
+                KPI1++
+                caminhao3.src = "../img/caminhao_critico.png";
+               
+            }
+            if (ultimaTemp[i].temperatura > -6.59 && ultimaTemp[i].temperatura < -3.84) {
+                KPI2++
+                caminhao2.src = "../img/caminhao_alerta.png";
+                
+            }
+            if (ultimaTemp[i].temperatura > 0.07 && ultimaTemp[i].temperatura < 1.75) {
+                KPI2++
+                caminhao2.src = "../img/caminhao_alerta.png";
+                
+            }
+            if (ultimaTemp[i].temperatura >= -3.84 && ultimaTemp[i].temperatura <= 0.07) {
+                KPI3++
+                caminhao1.src = "../img/caminhao_linear.png";
+                caminhao4.src = "../img/caminhao_linear.png";
+            }
+                    }
+            mostrarKPI1.innerHTML = `${KPI1}`;
+            mostrarKPI2.innerHTML = `${KPI2}`;
+            mostrarKPI3.innerHTML = `${KPI3}`;
+        }
+
+
+
+
+
+
+
+
+    function cadastrarFunc() {
+        var nomeFunc = ipt_nomeCad.value
+        var email = ipt_emailCad.value
+        var senha = ipt_senhaCad.value
+    
+        if (nomeFunc == "") {
+            div_validar.innerHTML = `Insira um nome`
+        } else if (email == "") {
+            div_validar.innerHTML = `Insira um email`
+        } else if (senha == "") {
+            div_validar.innerHTML = `Insira uma senha`
+        } else if (email.indexOf("@") == -1) {
+            div_validar.innerHTML = "Email inválido"
+        } else  if (senha.length < 8 || senha.length > 15) {
+            div_validar.innerHTML = `Insira uma senha com mínimo de 8 e máximo de 15`
+        } else {
+            div_validar.innerHTML = ""
+        }
+    }
+</script> 

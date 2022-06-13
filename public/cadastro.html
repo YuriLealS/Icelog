@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/funcoes.js"></script>
+    <title>IceLog</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/body.css">
+    <link rel="stylesheet" href="./css/root.css">
+    <link rel="stylesheet" href="./css/cabecalho.css">
+    <link rel="stylesheet" href="./css/corpo_cadastro..css">
+    <link rel="stylesheet" href="./css/rodape__cadastro.css">
+    <link rel="icon" href="./img/iceLogRedondo.png">
+</head>
+<body>
+    <header class="cabecalho">
+        <section class="container__cabecalho">
+            <a href="./index.html"><img src="./img/logo4.png" alt="" class="cabecalho__img"></a>
+            <ul class="cabecalho__menu">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./sobre.html" >Sobre </a></li>
+                <li><a href="./login.html">Login</a></li>
+                <li><a href="./cadastro.html">Cadastro</a></li>
+            </ul>
+        </section>
+    </header>
+    <main>
+        <!-- cadastro empresa -->
+        <section class="corpo_cadastro" id="cadastroEmpresa" style="display: flex">
+            <h1 class="titulo">Cadastro Empresa: </h1>
+            <section class="container__cadastro">
+                <p>Nome da empresa:</p>
+                <input type="text" id="ipt_cadastroNomeEmpresa">
+                <p>CNPJ:</p>
+                <input type="number" id="ipt_cadastroCNPJ">
+                <p>CEP:</p>
+                <input type="number" id="ipt_cadastroCEP">
+                <p>Número:</p>
+                <input type="number" id="ipt_cadastroNumero">
+                <button class="botao_cadastro" onclick="cadastrarEmpresa()">Continuar</button>
+                <span id="cardErro"></span>
+                <span id="mensagem_erro"></span>
+        </section> 
+</section>
+<section class="corpo_cadastro" id="cadastroFuncionario" style="display: none"> 
+    <h1 class="titulo">Cadastro Gerente: </h1>
+    <section class="container__cadastro">
+        <p>Nome:</p>
+        <input type="text" id="ipt_cadastroNome">
+        <p>Email:</p>
+        <input type="email" id="ipt_cadastroEmail">
+        <p>Senha:</p>
+        <input type="password" id="ipt_cadastroSenha">
+        <p>Confirme a senha:</p>
+        <input type="password" id="ipt_cadastroSenhaConfirmacao">
+        <button class="botao_cadastro" onclick="cadastrarUsuario()">Cadastrar</button>
+        <span id="cardErroGerente"></span>
+        <span id="mensagem_erroGerente"></span>
+    </section>
+</section>
+</main>
+<footer class="rodape__cadastro">
+    <img class="logo__rodape" src="./img/logo4.png" alt="">
+    <img class="copy" src="./img/copy.png" alt="">
+    <p>copy</p>
+    <img class="logo_face" src="./img/logo face.png" alt="">
+    <img class="logo_insta" src="./img/logo inst.png" alt="">
+    <img class="logo_tt" src="./img/logo tt.png" alt="">
+    </footer>
+</body>
+</html>
+<script>
+    var insertId
+    function cadastrarEmpresa() {
+        var nomeVar = ipt_cadastroNomeEmpresa.value;
+        var cnpjVar = ipt_cadastroCNPJ.value;
+        var cepVar = ipt_cadastroCEP.value;
+        var numeroVar = ipt_cadastroNumero.value;
+        if (nomeVar == "" || cnpjVar == "" || cepVar == "" || numeroVar == "") {
+            cardErro.innerHTML = "Preencha todos os campos para prosseguir!";     
+        }else if (cnpjVar.length !== 14) {
+            cardErro.innerHTML = 'O Cnpj deve conter 14 dígitos'
+        }else if (cepVar.length !== 8) {
+            cardErro.innerHTML = 'O cep deve conter 8 dígitos'
+            return false;
+        }
+        else{
+            
+            setInterval(sumirMensagem, 5000)
+
+            fetch("/empresa/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                nomeServer: nomeVar,
+                cnpjServer: cnpjVar,
+                cepServer: cepVar,
+                numeroServer: numeroVar,
+            })
+        }).then(function (resposta) {
+
+            if (resposta.ok) {  
+                cardErro.style = "display: block"
+                mensagem_erro.innerHTML = "Cadastro realizado com sucesso!";
+                resposta.json().then(json => {
+                    insertId = json.insertId
+                })
+                cadastroEmpresa.style= "display: none"
+                cadastroFuncionario.style = "display: flex"       
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);   
+        });
+        return false;
+        }
+        
+    }
+    function cadastrarUsuario() {
+//         idFuncionario int auto_increment,
+// nome varchar(45),
+// email varchar(100),
+// senha varchar(100),
+// tipo char(1), constraint chkTipo check(tipo in ('E', 'F', 'D')),
+// -- E = Empresa;
+// -- F = Funcionario;
+// -- D = desenvolvedor
+// fkEmpresa int,
+// foreign key (fkEmpresa) references Empresa(idEmpresa),
+// primary key (idFuncionario, fkEmpresa)
+// );
+        var nomeVar = ipt_cadastroNome.value;
+        var emailVar = ipt_cadastroEmail.value;
+        var senhaVar = ipt_cadastroSenha.value;
+        var confirmacaoSenhaVar = ipt_cadastroSenhaConfirmacao.value;
+        var tpUsuarioVar = 2;
+        var fkEmpresaVar = insertId;
+        if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
+            cardErroGerente.innerHTML="Preencha todos os campos para prosseguir!";
+            finalizarAguardar();
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+        if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1) {
+            cardErroGerente.innerHTML = "Ops, e-mail inválido! Verifique e tente novamente.";
+            finalizarAguardar();
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+        if (senhaVar != confirmacaoSenhaVar) {
+            cardErroGerente.innerHTML="As senhas inseridas devem ser iguais para prosseguir!";
+            finalizarAguardar();
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                nomeServer: nomeVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar,
+                tpUsuarioServer: tpUsuarioVar,
+                fkEmpresaServer: fkEmpresaVar
+            })
+        }).then(function (resposta) {
+
+            if (resposta.ok) {
+                cardErro.style.display = "block"
+                alert("Cadastro realizado com sucesso!");
+                window.location = "login.html";
+                limparFormulario();
+                finalizarAguardar();
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            finalizarAguardar();
+        });
+        return false;
+    }
+    function sumirMensagem() {
+        cardErro.style.display = "none"
+    }
+</script>

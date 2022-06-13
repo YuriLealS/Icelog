@@ -1,0 +1,20 @@
+:root {
+    --azulPrincipal: #158FCF;
+    --fonteLetra: 'Times New Roman', Times, serif;
+    --preto: black;
+    --azulTomMaisEscuro: #0C567D;
+    --azulClaro: #4CBEFB;
+    --branco: white;
+    --brancoOFF: #fdfdfd;
+    --azulEscuro: #158ecf23;
+    --fontWeight : bold;
+    --corbotaoContato : wheat;
+    --verdeClaro: #79ebc94d;
+    --corKPI1: #E84747;
+    --corKPI2: #F5D729;
+    --corKPI3: #79ceb4;
+    --cinza: #222;
+    --vermelho: red;
+    --verde: green;
+    --corBannerTexto: lightgray;
+}

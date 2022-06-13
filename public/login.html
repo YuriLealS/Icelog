@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Icelog | Login</title>
+    <script src="./js/funcoes.js"></script>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/body.css">
+    <link rel="stylesheet" href="./css/root.css">
+    <link rel="stylesheet" href="./css/cabecalho.css">
+    <link rel="stylesheet" href="./css/corpo__login.css">
+    <link rel="stylesheet" href="./css/rodape__login.css">
+    <link rel="icon" href="./img/iceLogRedondo.png">
+</head>
+<body>
+    <header class="cabecalho">
+        <section class="container__cabecalho">
+            <a href="./index.html"><img src="./img/logo4.png" alt="" class="cabecalho__img"></a>
+            <ul class="cabecalho__menu">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./sobre.html" >Sobre </a></li>
+                <li><a href="./login.html">Login</a></li>
+                <li><a href="./cadastro.html">Cadastro</a></li>
+            </ul>
+        </section>
+    </header>
+    <main>
+        <section class="corpo_login">
+            <h1 class="titulo">Login: </h1>
+            <section class="container__login">
+                <p class="textLogin">Email:</p>
+                <input type="text" id="ipt_loginEmail">
+                <p class="textLogin">Senha:</p>
+                <input type="password" id="ipt_loginSenha">
+                <button class="botao_login" onclick="entrar()">Entrar</button>
+                <span id="cardErro"></span>
+                <span id="mensagem_erro"></span>
+            </section>
+        </section>
+    </main>
+    <footer class="rodape__login">
+        <img class="logo__rodape" src="./img/logo4.png" alt="">
+        <img class="copy" src="./img/copy.png" alt="">
+        <p>copy</p>
+        <img class="logo_face" src="./img/logo face.png" alt="">
+        <img class="logo_insta" src="./img/logo inst.png" alt="">
+        <img class="logo_tt" src="./img/logo tt.png" alt="">
+    </footer>
+</body>
+</html>
+<script>
+    function entrar() {
+        var emailVar = ipt_loginEmail.value;
+        var senhaVar = ipt_loginSenha.value;
+        // TODO: VERIFICAR AS VALIDAÇÕES QUE ELES ESTÃO APRENDENDO EM ALGORITMOS 
+        if (emailVar == "" || senhaVar == "") {
+            cardErro.style.display = "block"
+            alert("Preencha todos os campos para prosseguir!");
+            finalizarAguardar();
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+        if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1) {
+            cardErro.style.display = "block"
+            alert("Ops, e-mail inválido! Verifique e tente novamente.");
+            finalizarAguardar();
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+            if (resposta.ok) {
+                console.log(resposta);
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.idUsuario;
+                    sessionStorage.FK_EMPRESA = json.fkEmpresa;
+                    setTimeout(function () {
+                        window.location = "./dashboard/caminhoes.html";
+                    }, 1000); // apenas para exibir o loading
+                });
+            } else {
+                console.log("Houve um erro ao tentar realizar o login!");
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizarAguardar(texto);
+                });
+            }
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+        return false;
+    }
+    function sumirMensagem() {
+        cardErro.style.display = "none"
+    }
+</script>

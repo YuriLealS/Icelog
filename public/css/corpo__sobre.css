@@ -1,0 +1,286 @@
+.banner__sobre {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 30vh;
+    margin-top: 10vh;
+    background: linear-gradient( var(--azulEscuro) transparent);
+}
+.titulo__banner {
+    font-size: 8vh;
+    color: var(--azulPrincipal);
+    font-weight: var(--fontWeight);
+}
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.card {
+    box-shadow: 0 0 10px var(--azulClaro), 3px 3px 10px var(--azulTomMaisEscuro);
+    background: var(--brancoOFF);
+    width: 38vw;
+    height: 42vh;
+    margin: 2vw;
+    border-radius: 20px;
+    padding: 1vh;
+}
+.card5 {
+    box-shadow: 0 0 10px var(--azulClaro), 3px 3px 10px var(--azulTomMaisEscuro);
+    background: var(--brancoOFF);
+    width: 38vw;
+    height: 42vh;
+    margin: 2vw;
+    border-radius: 20px;
+}
+.card6 {
+    box-shadow: 0 0 10px var(--azulClaro), 3px 3px 10px var(--azulTomMaisEscuro);
+    background: var(--brancoOFF);
+    width: 38vw;
+    height: 42vh;
+    margin: 2vw;
+    border-radius: 20px;
+}
+.card__um {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.card__dois {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.card__tres {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.card__quatro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.card__cinco {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 1vh;
+}
+.card__seis {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2.7vh 1vh;
+}
+.card__um--img {
+    width: 10vw;
+}
+.card__dois--img {
+    width: 10vw;
+}
+.card__tres--img {
+    width: 10vw;
+    margin-top: 1vh;
+}
+.card__quatro--img {
+    width: 10vw;
+    margin-top: 1vh;
+}
+.card__cinco--img {
+    width: 15vw;
+    margin-top: 2vh;
+}
+.card__seis--img {
+    width: 10vw;
+}
+.card__um--frase {
+    font-size: 20px;
+    margin-top: 2vw;
+}
+.card__dois--frase {
+    font-size: 20px;
+    margin-top: 2vw;
+}
+.card__tres--frase {
+    font-size: 20px;
+    height: 47vh;
+}
+.card__quatro--frase {
+    font-size: 20px;
+    margin-top: 2vw;
+}
+.card__cinco--frase {
+    font-size: 20px;
+    margin-top: 2vw;
+    text-align: center;
+}
+.card__seis--frase {
+    font-size: 20px;
+    margin-top: 2vw;
+    text-align: center;
+}
+@media screen and (max-width: 500px) {
+    .cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .card {
+        width: 60vw;
+        height: 35vh;
+        margin: 4vw;
+    }
+    .card5 {
+        width: 60vw;
+        height: 49vh;
+        margin: 4vw;
+        padding: 2vh 1vw;
+    }
+    .card6 {
+        width: 60vw;
+        height: 40vh;
+        margin: 4vw;
+        padding: 2vh 1vw;
+    }
+    .card__cinco--img {
+        width: 35vw;
+        margin-top: 2vh;
+    }
+    .card__seis--img {
+        width: 27vw;
+        margin-top: 2vh;
+    }
+    .card__um--frase {
+        font-size: 3.5vh;
+        margin-top: 2vw;
+        text-align: center;
+    }
+    .card__dois--frase {
+        font-size: 3.5vh;
+        text-align: center;
+        margin-top: 2vw;
+    }
+    .card__tres--frase {
+        font-size: 3.5vh;
+        height: 47vh;
+        text-align: center;
+        line-height: 4.8vh;
+    }
+    .card__quatro--frase {
+        font-size: 3.5vh;
+        text-align: center;
+        margin-top: 2vw;
+    }
+    .card__cinco--frase {
+        font-size: 3.5vh;
+        margin-top: 2vw;
+        text-align: center;
+    }
+    .card__seis--frase {
+        font-size: 3.5vh;
+        margin-top: 2vw;
+        text-align: center;
+    }
+}
+@media screen and (min-width: 500px) {
+    .card {
+        width: 38vw;
+        height: 40vh;
+    }
+    .card5 {
+        width: 38vw;
+        height: 45vh;
+        margin: 2vw;
+        padding: 2vh 1vw;
+    }
+    .card6 {
+        width: 38vw;
+        height: 45vh;
+        padding: 2vh 1vw;
+        margin: 2vw;
+    }
+    .card__cinco--img {
+        width: 21vw;
+        margin-top: 2vh;
+    }
+    .card__seis--img {
+        width: 16vw;
+        margin-top: 2vh;
+    }
+    .card__um--frase {
+        font-size: 3.5vh;
+        margin-top: 2vw;
+        text-align: center;
+    }
+    .card__dois--frase {
+        font-size: 3.5vh;
+        margin-top: 2vw;
+        text-align: center;
+    }
+    .card__tres--frase {
+        font-size: 3.5vh;
+        line-height: 4.8vh;
+        text-align: center;
+    }
+    .card__quatro--frase {
+        font-size: 3.5vh;
+        margin-top: 2vw;
+        text-align: center;
+    }
+    .card__cinco--frase {
+        font-size: 3.5vh;
+        margin-top: 2vw;
+        text-align: center;
+    }
+    .card__seis--frase {
+        font-size: 3.5vh;
+        margin-top: 2vw;
+        text-align: center;
+    }
+}
+@media screen and (min-width: 1200px) {
+    .card {
+        width: 40vw;
+        height: 45vh;
+        margin: 2vw;
+    }
+    .card5 {
+        width: 40vw;
+        height: 62vh;
+        margin: 2vw;
+        padding: 1vh 0.4vw;
+    }
+    .card6 {
+        width: 40vw;
+        height: 62vh;
+        margin: 2vw;
+        padding: 1vh 0.4vw;
+    }
+    .card__um--frase {
+        font-size: 4vh;
+        text-align: center;
+    }
+    .card__dois--frase {
+        font-size: 4vh;
+        text-align: center;
+    }
+    .card__tres--frase {
+        font-size: 4vh;
+        text-align: center;
+    }
+    .card__quatro--frase {
+        font-size: 4vh;
+        text-align: center;
+    }
+    .card__cinco--frase {
+        font-size: 4vh;
+        text-align: center;
+    }
+    .card__seis--frase {
+        font-size: 4vh;
+        text-align: center;
+    }
+}

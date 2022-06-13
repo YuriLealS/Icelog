@@ -1,0 +1,181 @@
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.card {
+    background: var(--azulPrincipal);
+    width: 35vw;
+    height: 47vh;
+    margin: 2vw;
+    border-radius: 20px;
+}
+.card__um {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.card__dois {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.card__tres {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.card__quatro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.card__um--img {
+    width: 10vw;
+}
+.card__dois--img {
+    width: 10vw;
+}
+.card__tres--img {
+    width: 10vw;
+    margin-top: 1vh;
+}
+.card__quatro--img {
+    width: 10vw;
+    margin-top: 1vh;
+}
+.card__um--frase {
+    font-size: 20px;
+    margin-top: 2vw;
+    text-align: center;
+}
+.card__dois--frase {
+    font-size: 20px;
+    margin-top: 2vw;
+    text-align: center;
+}
+.card__tres--frase {
+    font-size: 20px;
+    text-align: center;
+    line-height: 4.8vh;
+}
+.card__quatro--frase {
+    font-size: 20px;
+    margin-top: 2vw;
+    text-align: center;
+}
+.calculadora__botao {
+    width: 18vw;
+    border: transparent;
+    border-radius: 15px;
+    color: var(--azulPrincipal);
+    font-size: 28px;
+    margin-top: 5vh;
+    font-weight: var(--fontWeigh);
+    transition: 0.2s;
+    text-shadow: 1.2px 1.5px var(--brancoOFF);
+}
+@media screen and (max-width: 500px) {
+    .cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .card {
+        width: 55vw;
+        height: 30vh;
+        margin: 4vw;
+    }
+    .card__um--frase {
+        font-size: 3.5vh;
+        margin-top: 2vw;
+        text-align: center;
+    }
+    .card__dois--frase {
+        font-size: 3.5vh;
+        margin-top: 2vw;
+        text-align: center;
+    }
+    .card__tres--frase {
+        font-size: 3.5vh;
+        text-align: center;
+    }
+    .card__quatro--frase {
+        font-size: 3.5vh;
+        margin-top: 2vw;
+        text-align: center;
+    }
+    .calculadora__botao {
+        width: 30vw;
+        border: transparent;
+        border-radius: 15px;
+        color: var(--azulPrincipal);
+        font-size: 3vh;
+        margin-top: 5vh;
+        font-weight: var(--fontWeigh);
+        transition: 0.2s;
+        text-shadow: 1.2px 1.5px var(--brancoOFF);
+    }
+}
+
+@media screen and (min-width: 500px) {
+    .card__um--frase {
+        font-size: 3.5vh;
+        text-align: center;
+    }
+    .card__dois--frase {
+        font-size: 3.5vh;
+        margin-top: 2vw;
+        text-align: center;
+    }
+    .card__tres--frase {
+        font-size: 3.5vh;
+        text-align: center;
+    }
+    .card__quatro--frase {
+        font-size: 3.5vh;
+        margin-top: 2vw;
+        text-align: center;
+    }
+    .calculadora__botao {
+        width: 18vw;
+        border: transparent;
+        border-radius: 15px;
+        color: var(--azulPrincipal);
+        font-size: 3.5vh;
+        margin-top: 5vh;
+        font-weight: bolder;
+        transition: 0.2s;
+        text-shadow: 1.2px 1.5px var(--brancoOFF);
+    }
+}
+@media screen and (min-width: 1200px) {
+    .card {
+        width: 35vw;
+        height: 47vh;
+        margin: 2vw;
+    }
+    .card__um--frase {
+        font-size: 4vh;
+    }
+    .card__dois--frase {
+        font-size: 4vh;
+    }
+    .card__tres--frase {
+        font-size: 4vh;
+    }
+    .card__quatro--frase {
+        font-size: 4vh;
+    }
+    .calculadora__botao {
+        width: 18vw;
+        border: transparent;
+        border-radius: 15px;
+        color: var(--azulPrincipal);
+        font-size: 4.5vh;
+        margin-top: 5vh;
+        font-weight: var(--fontWeigh);
+        transition: 0.2s;
+        text-shadow: 1.2px 1.5px var(--brancoOFF);
+    }
+}

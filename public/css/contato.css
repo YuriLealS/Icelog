@@ -1,0 +1,180 @@
+@media screen and (max-width: 500px) {
+    .contato {
+        background: var(--brancoOFF);
+        width: 58vw;
+        margin: 4vh 20vw;
+        border-radius: 5vh;
+        box-shadow: 0px 0px 10px var(--azulClaro), 3px 3px 10px var(--azulTomMaisEscuro);
+    }
+    .contatos {
+        background: var(--preto);
+        text-align: center;
+        padding: 2vh;
+        color: var(--brancoOFF);
+        font-size: 3vh;
+        border-top-left-radius: 5vh;
+        border-top-right-radius: 5vh;
+        box-shadow: 0px 0px 10px var(--azulClaro), 3px 3px 10px var(--azulTomMaisEscuro);
+    }
+    .contato_corpo {
+        display: flex;
+        flex-direction: column;
+        padding: 6.4vw;
+    }
+    .texto_contato {
+        font-size: 2.3vh;
+        font-weight: var(--fontWeigh);
+        margin-bottom: 1vh;
+        text-align: center;
+        margin-top: 1vh;
+        font-weight: bold;
+    }
+    .ipt_contato {
+        margin-top: 1vh;
+        border-radius: 3vh;
+        text-align: center;
+    }
+    .btn_contato {
+        height: 4vh;
+        margin-top: 1vh;
+        font-weight: var(--fontWeigh);
+        background: linear-gradient( var(--preto), var(--azulTomMaisEscuro));
+        border: transparent;
+        border-radius: 3vh;
+        color: var(--corbotaoContato);
+    }
+    .btn_contato:hover {
+        transition: 00.2s;
+        border: 3px solid var(--brancoOFF);
+    }
+    #textarea_msg {
+        margin-bottom: 1vh;
+        font-size: 2vh;
+        border-radius: 3vh;
+        padding: 1.5vw;
+    }
+}
+
+@media screen and (min-width: 500px) {
+    .contato {
+        background: var(--brancoOFF);
+        width: 58vw;
+        margin: 4vh 20vw;
+        border-radius: 5vh;
+        box-shadow: 0px 0px 10px var(--azulClaro), 3px 3px 10px var(--azulTomMaisEscuro);
+    }
+    .contatos {
+        background: var(--preto);
+        text-align: center;
+        padding: 5vh;
+        color: var(--brancoOFF);
+        font-size: 5vh;
+        border-top-left-radius: 5vh;
+        border-top-right-radius: 5vh;
+        box-shadow: 0px 0px 10px var(--azulClaro), 3px 3px 10px var(--azulTomMaisEscuro);
+    }
+    .contato_corpo {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        padding: 3vw;
+    }
+    .texto_contato {
+        font-size: 5vh;
+        font-weight: var(--fontWeigh);
+        margin-bottom: 1vh;
+        text-align: center;
+        margin-top: 1vh;
+        font-weight: bold;
+    }
+    .ipt_contato {
+        margin-top: 1vh;
+        border-radius: 3vh;
+        text-align: center;
+        height: 5vh;
+        font-size: 2.5vh;
+    }
+    #textarea_msg {
+        margin-bottom: 1vh;
+        font-size: 2.5vh;
+        border-radius: 3vh;
+        padding: 1vw;
+    }
+    .btn_contato {
+        height: 10vh;
+        width: 20vw;
+        margin-top: 1vh;
+        font-size: 4vh;
+        background: linear-gradient(var(--preto), var(--azulTomMaisEscuro));
+        border: transparent;
+        border-radius: 3vh;
+        margin-left: 17.4vw;
+        color: var(--corbotaoContato);
+    }
+    .btn_contato:hover {
+        transition: 00.2s;
+        border: 3px solid var(--branco);
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .contato {
+        background: var(--branco);
+        width: 58vw;
+        border-radius: 5vh;
+        margin: 4vh 20vw;
+        box-shadow: 0px 0px 10px var(--azulClaro), 3px 3px 10px var(--azulTomMaisEscuro);
+    }
+    .contatos {
+        background: var(--preto);
+        text-align: center;
+        padding: 5vh;
+        color: var(--branco);
+        font-size: 5vh;
+        box-shadow: 0 0 10px var(--azulClaro), 3px 3px 10px var(--azulTomMaisEscuro);
+        border-top-left-radius: 5vh;
+        border-top-right-radius: 5vh;
+        font-weight: var(--fontWeigh);
+    }
+    .contato_corpo {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        padding: 3vw;
+    }
+    .texto_contato {
+        font-size: 5vh;
+        font-weight: var(--fontWeigh);
+        margin-bottom: 1vh;
+        text-align: center;
+        margin-top: 1vh;
+    }
+    .ipt_contato {
+        margin-top: 1vh;
+        border-radius: 3vh;
+        text-align: center;
+        height: 5vh;
+        font-size: 3vh;
+    }
+    #textarea_msg {
+        margin-bottom: 1vh;
+        font-size: 3vh;
+        border-radius: 3vh;
+        padding: 1vw;
+    }
+    .btn_contato {
+        height: 8vh;
+        width: 20vw;
+        margin-top: 1vh;
+        font-size: 5vh;
+        background: linear-gradient(var(--preto), var(--azulTomMaisEscuro));
+        border-radius: 3vh;
+        border: transparent;
+        margin-left: 17vw;
+        color: var(--corbotaoContato);
+    }
+    .btn_contato:hover {
+        transition: 00.2s;
+        border: 3px solid var(--branco);
+    }
+}

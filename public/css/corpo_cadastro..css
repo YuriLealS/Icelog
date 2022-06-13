@@ -1,0 +1,83 @@
+.corpo_cadastro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2.8vh;
+    margin-top: 14vh;
+}
+.titulo {
+    font-size: 48px;
+    margin-top: 5vh;
+    text-align: center;
+}
+.container__cadastro {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 5vh;
+    box-shadow: 0px 0px 15px var(--azulClaro), 5px 5px 15px var(--azulTomMaisEscuro);
+    border-radius: 25px;
+    padding: 3vh 4vw;
+    height: 45vh;
+    justify-content: space-around;
+}
+#ipt_cadastroNomeEmpresa {
+    border: transparent;
+    border-bottom: 1px solid var(--cinza);
+    background: transparent;
+}
+
+#ipt_cadastroNome {
+    border: transparent;
+    border-bottom: 1px solid var(--cinza);
+    background: transparent;
+}
+#ipt_cadastroCNPJ {
+    border: transparent;
+    border-bottom: 1px solid var(--cinza);
+    background: transparent;
+}
+#ipt_cadastroEmail {
+    border: transparent;
+    border-bottom: 1px solid var(--cinza);
+    background: transparent;
+}
+#ipt_cadastroCEP {
+    border: transparent;
+    border-bottom: 1px solid var(--cinza);
+    background: transparent;
+}
+#ipt_cadastroNumero {
+    border: transparent;
+    border-bottom: 1px solid var(--cinza);
+    background: transparent;
+}
+#ipt_cadastroSenha {
+    border: transparent;
+    border-bottom: 1px solid var(--cinza);
+    background: transparent;
+}
+#ipt_cadastroSenhaConfirmacao {
+    border: transparent;
+    border-bottom: 1px solid var(--cinza);
+    background: transparent;
+}
+.botao_cadastro {
+    border-right: 2px solid var(--azulPrincipal);
+    border-bottom: 2px solid var(--azulPrincipal);
+    border-top: 1px solid var(--azulPrincipal);
+    border-left: 1px solid var(--azulPrincipal);
+    border-radius: 10px;
+    height: 4vh;
+    width: 15vw;
+    margin: 1vh 0;
+    font-weight: bold;
+}
+@media screen and (max-width: 500px) {
+    .container__cadastro {
+        width: 65vw;
+    }
+    .botao_cadastro {
+        width: 25vw;
+    }
+}

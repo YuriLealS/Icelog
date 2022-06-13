@@ -1,0 +1,74 @@
+.rodape {
+    background: var(--preto);
+    height: 14.5vh;
+    margin-top: 5vh;
+    display: flex;
+    flex-direction: row;
+    color: var(--brancoOFF);
+    align-items: center;
+    width: 100%;
+}
+.logo_face {
+    width: 3vw;
+    margin-left: 25vw;
+}
+.logo_insta {
+    width: 3vw;
+    margin-left: 1vw;
+}
+.logo_tt {
+    width: 3vw;
+    margin-left: 1vw;
+}
+@media screen and (max-width: 500px) {
+    .logo_face {
+        width: 4vw;
+    }
+    .logo_insta {
+        width: 4vw;
+    }
+    .logo_tt {
+        width: 4vw;
+    }
+    .logo__rodape {
+        width: 10vw;
+        margin-left: 1vw;
+    }
+    .copy {
+        width: 2vw;
+        margin-left: 20vw;
+    }
+}
+@media screen and (max-width: 992px) {
+    .logo__rodape {
+        width: 14vw;
+        margin-left: 8vw;
+    }
+    .copy {
+        width: 2vw;
+        margin-left: 20vw;
+    }
+}
+@media screen and (min-width: 992px) {
+    .logo__rodape {
+        width: 12vw;
+        margin-left: 9vw;
+    }
+    .copy {
+        width: 2vw;
+        margin-left: 24vw;
+    }
+}
+@media screen and (min-width: 1200px) {
+    .rodape {
+        margin-top: 15vh;
+    }
+    .logo__rodape {
+        width: 12vw;
+        margin-left: 8vw;
+    }
+    .copy {
+        width: 2vw;
+        margin-left: 28vw;
+    }
+}

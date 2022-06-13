@@ -1,0 +1,52 @@
+.corpo_login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 8.8vh;    
+    margin-top: 18vh;
+}
+.titulo {
+    font-size: 48px;
+    margin-top: 5vh;
+}
+.container__login {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 5vh;
+    box-shadow: 0px 0px 15px var(--azulClaro), 5px 5px 15px var(--azulTomMaisEscuro);
+    border-radius: 25px;
+    padding: 3vh 8vh;
+    height: 35vh;
+    justify-content: space-around;
+}
+.textLogin {
+    margin-bottom: -4vh;
+}
+#ipt_loginEmail {
+    border: transparent;
+    border-bottom: 1px solid var(--cinza);
+    background: transparent;
+}
+#ipt_loginSenha {
+    border: transparent;
+    border-bottom: 1px solid var(--cinza);
+    background: transparent;
+}
+.botao_login {
+    border-right: 2px solid var(--azulPrincipal);
+    border-bottom: 2px solid var(--azulPrincipal);
+    border-top: 1px solid var(--azulPrincipal);
+    border-left: 1px solid var(--azulPrincipal);
+    border-radius: 10px;
+    height: 4vh;
+    width: 10vw;
+}
+@media screen and (max-width: 500px) {
+    .container__login {
+        width: 65vw;
+    }
+    .botao_login {
+        width: 15vw;
+    }
+}

@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="shortcut icon" href="../assets/icon/favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Icelog | Tempo Real</title>
+
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/body.css">
+    <link rel="stylesheet" href="../css/root.css">
+    <link rel="stylesheet" href="../css/cabecalho__Dash.css">
+    <link rel="stylesheet" href="../css/corpo__dashboard.css">
+    <link rel="stylesheet" href="../css/rodape.css">
+    <link rel="icon" href="../img/iceLogRedondo.png">
+
+      <!-- scripts do Chart.js -->
+    <script type="text/javascript" src="https://www.chartjs.org/dist/2.8.0/Chart.min.js"></script>
+    <script src="../js/funcoes.js"></script>
+
+</head>
+</head>
+
+<body>
+<!-- <body onload="exibirMuitos(), validarSessao(), atualizacaoPeriodica()"> -->
+    <!-- <body onload="exibirMuitos(), validarSessao()"> -->
+    <!-- <body onload="mostrarCaminhao()"> -->
+
+    <header class="cabecalho">
+        <section class="container__cabecalho">
+            <a href="../index.html"><img src="../img/logo4.png" alt="" class="cabecalho__img"></a>
+            <ul class="cabecalho__menu">
+                <button class="cabecalho__menu--cadastro"><i>Menu</i></button>
+                <span class="cabecalho__texto--bemVindo">Seja bem vindo <b id="b_usuario"></b>!</span>
+                <li>|</li>
+                <li class="cabecalho__sair" onclick="limparSessao()">Sair</li>
+            </ul>
+        </section>
+    </header>
+    <main>
+        <section class="menu__lateral">
+            <h2 class="titulo_menu__cadastro--func">Menu</h2>  
+            <section id="botoes__menu" class="menu__inicial">
+                <button class="botao_menu__cadastro--func" onclick="botao__cadastro()">Cadastro</button>
+                <!-- <img src="../img/iceLogRedondo.png" alt="" class="img_menu"> -->
+                <!-- <button class="botao_menu__cadastro--func" onclick="botao__login()">Login</button> -->
+                <button class="voltar__menu--func" onclick="botao__voltar()" id="botao__voltar__menu">Voltar</button>
+                <button class="botao_menu__cadastro--func--Help"><a href="https://icelog.freshdesk.com/">Help Desk</a></button>
+            </section>
+            <section style="display: none;" id="cadastro__menu" class="menu__cadastro__inputs">
+
+                <p class="subTitulo_menu__cadastro--func">Nome usuario:</p>
+                <input id="ipt_cadastroNome" placeholder="" class="ipt_cadastro--func">
+
+                <p class="subTitulo_menu__cadastro--func">Email:</p>
+                <input type="email" id="ipt_cadastroEmail" placeholder="" class="ipt_cadastro--func">
+
+                <p class="subTitulo_menu__cadastro--func">Senha:</p>
+                <input type="password" id="ipt_cadastroSenha" placeholder="" class="ipt_cadastro--func">
+
+                <button class="botao_menu__cadastro--cadast" onclick="cadastrarUsuario()">Cadastrar</button>
+
+                <div id="div_validar" class="validacao"></div>
+
+                <button class="voltar__menu--cadast" onclick="botao__voltar()">Voltar</button>
+            </section>
+            <section style="display: none;" id="login__menu" class="menu__login__inputs">
+                <p class="subTitulo_menu__cadastro--func">Email:</p>
+                <input type="text" id="" placeholder="" class="ipt_cadastro--func">
+                <p class="subTitulo_menu__cadastro--func">Senha:</p>
+                <input type="text" id="" placeholder="" class="ipt_cadastro--func">
+                <button class="botao_menu__cadastro--login">Logar</button>
+                <button class="voltar__menu--login" onclick="botao__voltar()">Voltar</button>
+            </section>
+    </section>
+        <section class="Dash__pai">
+             <!-- nessa div de baixxo colocar uma largura maxima de 100% da tela (especificamente %) -->
+             <!-- a segunda coisa é a seguinte, coloca nela um negocio pra quebrar linha -->
+             <!-- ou seja quando chegar no final vai quebrar e vai pra baixo e ai vai manter as config anterior pra quebrar linha -->
+             <div class="painel__Dash" id="div_muitos_botoes" >      
+            </div>
+        </section>
+            
+
+        <section class="border_charJs">
+            <div class="charJs">
+                <!-- grafico de linha -->
+                <canvas id="myChart"></canvas>
+                <div class="CardsFinal">
+                    <section class="container__graficos--menores">
+                        <section class="graficoPizza">
+                            <section class="border_charJs--pizza">
+                                <div class="charJsPizza">
+                                    <!-- grafico de pizza -->
+                                    <!-- <canvas id="myChartPizza1"></canvas> -->
+                                    <canvas id="myChart1" width="300px" height="200px"></canvas>
+                                </div>
+                            </section>
+                        </section>
+                        <section class="graficoColuna">
+                            <section class="border_charJs--coluna">
+                                <div class="charJsColuna">
+                                    <!-- grafico de coluna -->
+                                    <!-- <canvas id="myChartColuna"></canvas> -->
+                                    <canvas id="myChart2" width="300px" height="200px"></canvas>
+                                </div>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="rodape">
+        <img class="logo__rodape" src="../img/logo4.png" alt="">
+        <img class="copy" src="../img/copy.png" alt="">
+        <p>copy</p>
+        <img class="logo_face" src="../img/logo face.png" alt="">
+        <img class="logo_insta" src="../img/logo inst.png" alt="">
+        <img class="logo_tt" src="../img/logo tt.png" alt="">
+    </footer>
+    <script src="../js/cadastroFuncionario.js"></script>
+</body>
+
+</html>
+
+<script>
+    // cadastrar usuario 
+    function cadastrarUsuario() {
+        var nomeVar = ipt_cadastroNome.value;
+        var emailVar = ipt_cadastroEmail.value;
+        var senhaVar = ipt_cadastroSenha.value;
+        var tpUsuarioVar = 3;
+        var fkEmpresaVar = sessionStorage.FK_EMPRESA;
+
+        if (nomeVar == "" || emailVar == "" || senhaVar == "") {
+            cardErro.style.display = "block"
+            div_validar.innerHTML = "Preencha todos os campos para prosseguir!";
+
+            return false;
+        }
+        
+
+        
+      if (senhaVar.length < 8 || senhaVar.length > 15) {
+        div_validar.innerHTML = `Insira uma senha com mínimo de 8 e máximo de 15`
+    } 
+
+        if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1) {
+            cardErro.style.display = "block"
+            div_validar.innerHTML = "Ops, e-mail inválido! Verifique e tente novamente.";
+            return false;
+        }
+        
+
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                nomeServer: nomeVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar,
+                tpUsuarioServer: tpUsuarioVar,
+                fkEmpresaServer: fkEmpresaVar
+            })
+        }).then(function (resposta) {
+
+            if (resposta.ok) {
+                cardErro.style.display = "block"
+                mensagem_erro.innerHTML = "Cadastro realizado com sucesso!";
+                limparFormulario();
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            limparFormulario();
+        });
+
+        return false;
+    }
+
+    function limparFormulario(){
+        ipt_cadastroNome.value = "";
+        ipt_cadastroEmail.value = "";
+        ipt_cadastroSenha.value = "";
+    }
+
+    // obeter dados, plotar e atualizar graficos
+let proximaAtualizacao;
+
+window.onload = obterDadosGrafico(localStorage.idCaminhao);
+
+b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+    function obterDadosGrafico(idCaminhao) {
+        console.log("entrei no obter")
+        // if (proximaAtualizacao != undefined) {
+        //     clearTimeout(proximaAtualizacao);
+        // }
+
+        fetch(`/medidas/ultimas/${idCaminhao}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
+
+                    plotarGrafico(resposta, idCaminhao);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    function plotarGrafico(resposta, idCaminhao) {
+        console.log('iniciando plotagem do gráfico...');
+
+        var dados = {
+            labels: [],
+            datasets: [
+                {
+                    // joga as temperaturas
+                    yAxisID: 'y-temperatura',
+                    label: 'Temperatura',
+                    borderColor: '#FFF',
+                    backgroundColor: '#32b9cd8f',
+                    fill: true,
+                    // dados da temperatura
+                    data: []
+                }
+            ]
+        };
+
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+            // verificar se esta referenciado
+            dados.labels.push(registro.momento_grafico);
+            dados.datasets[0].data.push(registro.temperatura);
+        }
+
+        console.log(JSON.stringify(dados));
+
+        //  verificar nome ctx
+        var ctx = myChart.getContext('2d');
+        window.grafico_linha = Chart.Line(ctx, {
+            data: dados,
+            options: {
+                responsive: true,
+                animation: { duration: 500 },
+                hoverMode: 'index',
+                stacked: false,
+                title: {
+                    display: false,
+                    text: 'Dados capturados'
+                },
+                scales: {
+                    yAxes: [{
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                        id: 'y-temperatura',
+                        ticks: {
+                            beginAtZero: true,
+                            max: 25,
+                            min: -25
+                        }
+                    }],
+                }
+            }
+        });
+
+        setTimeout(() => atualizarGrafico(idCaminhao, dados), 2000);
+    }
+
+
+    function atualizarGrafico(idCaminhao, dados) {
+
+fetch(`/medidas/tempo-real/${idCaminhao}`, { cache: 'no-store' }).then(function (response) {
+    if (response.ok) {
+        response.json().then(function (novoRegistro) {
+
+            console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+            console.log(`Dados atuais do gráfico: ${dados}`);
+
+            // tirando e colocando valores no gráfico
+            dados.labels.shift(); // apagar o primeiro
+            dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
+            
+            dados.datasets[0].data.shift();  // apagar o primeiro de temperatura
+            dados.datasets[0].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
+
+            window.grafico_linha.update();
+
+            // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+            proximaAtualizacao = setTimeout(() => atualizarGrafico(idCaminhao, dados), 3000);
+        });
+    } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+        // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+        proximaAtualizacao = setTimeout(() => atualizarGrafico(idCaminhao, dados), 3000);
+    }
+})
+    .catch(function (error) {
+        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    });
+
+}
+
+const ctx = document.getElementById('myChart1');
+const myChart1 = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: ['Caminhões com temperatura fora do ideal', 'Caminhões com temperatura adequada'],
+        datasets: [{
+            label: '# of Votes',
+            data: [12, 88],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+ 
+ 
+
+const ctz = document.getElementById('myChart2');
+const myChart2 = new Chart(ctz, {
+    type: 'bar',
+    data: {
+        labels: [' Ideal no percuso', 'Alerta no percuso', 'Crítico no percuso'],
+        datasets: [{
+            label: 'Temperaturas nos percursos',
+            data: [20, 10, 8, 10, 6],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+</script>
